@@ -1,0 +1,22 @@
+{
+  "name": "hackernews-node",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "SET NODE_ENV=dev && node src/index.js",
+    "dev": "nodemon src/index.js",
+    "playground": "graphql playground"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.4.17",
+    "@prisma/client": "^2.12.1",
+    "apollo-server": "^2.19.0",
+    "bcryptjs": "2.4.3",
+    "graphql": "^15.7.2",
+    "jsonwebtoken": "8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6",
+    "prisma": "^3.4.2"
+  }
+}
