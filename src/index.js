@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { setContext } from "@apollo/client/link/context";
 import './styles/index.css';
 import App from './components/App';
 
@@ -17,9 +18,18 @@ const httpLink = createHttpLink({
   uri: 'http://localhost:4000'
 });
 
+const authLink = setContext((_, { headers }) => {
+  return {
+    headers: {
+      ...headers,
+      authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTYzNjU4Mjc3M30.zPc_PE_70DZZ3_3sawVID8MHOB5rrxaPj9w3OOFZ9RU"
+    }
+  }
+});
+
 // 3
 const client = new ApolloClient({
-  link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
 
