@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const CREATE_LINK_MUTATION = gql`
@@ -19,7 +19,7 @@ const CREATE_LINK_MUTATION = gql`
 
 const CreateLink = () => {
   
-    const history = useHistory();
+  let navigate = useNavigate();
 
   const [formState, setFormState] = useState({
     description: '',
@@ -31,7 +31,7 @@ const CreateLink = () => {
       description: formState.description,
       url: formState.url
     },
-    onCompleted: () => history.push('/')
+    onCompleted: () => navigate('../')
   });
 
   return (
