@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { setContext } from "@apollo/client/link/context";
+import { AUTH_TOKEN } from './constants';
 import './styles/index.css';
 import App from './components/App';
 
@@ -13,6 +14,7 @@ import {
   createHttpLink,
   InMemoryCache
 } from '@apollo/client';
+import { AUTH_TOKEN } from './constants';
 
 // 2
 const httpLink = createHttpLink({
@@ -20,10 +22,11 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem(AUTH_TOKEN);
   return {
     headers: {
       ...headers,
-      authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTYzNjU4Mjc3M30.zPc_PE_70DZZ3_3sawVID8MHOB5rrxaPj9w3OOFZ9RU"
+      authorization: token ? `Bearer ${token}` : ''
     }
   }
 });
