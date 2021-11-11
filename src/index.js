@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { setContext } from "@apollo/client/link/context";
 import './styles/index.css';
 import App from './components/App';
@@ -35,9 +36,11 @@ const client = new ApolloClient({
 
 // 4
 ReactDOM.render(
+  <BrowserRouter>
   <ApolloProvider client={client}>
     <App />
-  </ApolloProvider>,
+  </ApolloProvider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
  
