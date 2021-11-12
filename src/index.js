@@ -14,7 +14,6 @@ import {
   createHttpLink,
   InMemoryCache
 } from '@apollo/client';
-import { AUTH_TOKEN } from './constants';
 
 // 2
 const httpLink = createHttpLink({
