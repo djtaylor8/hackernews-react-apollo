@@ -2,7 +2,7 @@ import React from 'react';
 import CreateLink from './CreateLink';
 import Header from './Header';
 import LinkList from './LinkList';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Redirect } from 'react-router-dom';
 import Login from './Login';
 import Search from './Search';
 
@@ -20,6 +20,11 @@ const App = () => {
           />
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/search' element={<Search />} />
+          <Route exact path="/top" component={LinkList} />
+          <Route 
+            exact path='/new/:page'
+            element={<LinkList />}
+          />
         </Routes>
       </div>
     </div>

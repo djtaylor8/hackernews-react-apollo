@@ -58,7 +58,7 @@ const CreateLink = () => {
         }
       });
     },
-    onCompleted: () => navigate('/new/1')
+    onCompleted: () => navigate('/')
   });
   return (
     <div>
